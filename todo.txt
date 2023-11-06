@@ -7,7 +7,7 @@ Todo:
 ✅	- Réserver l’accès à la liste des usagers aux usagers de type admin	(Colin)
 ✅	- Faire apparaitre l’article de menu Gestion des usagers uniquement aux usagers administrateur. La page de
 	  gestion des usagers devra présenter tous les usagers, excluant celui qui est connecté.
-	- Empêcher la connexion des usagers bloqués avec le message approprié
+✅	- Empêcher la connexion des usagers bloqués avec le message approprié
 	- Empêcher l’accès illégal des pages réservées aux admins	(Colin)
 	- Permettre aux usagers admins l’accès total aux photos de tous les usagers
 	- Ajouter une page qui affiche les détails d’une photo (Avatar du créateur, nom du créateur, titre, image de la
