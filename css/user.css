@@ -16,6 +16,7 @@
     grid-template-columns: 35px 35px 35px;
     align-items: center;
     margin-right: 5px;
+    margin-left: -30px;
 }
 
 .UserContainer .cmdIcon {
@@ -36,15 +37,15 @@
 }
 
 .redCmd {
-    -webkit-text-fill-color:red !important;
+    color:red !important;
 }
 
 .greenCmd {
-    -webkit-text-fill-color:rgb(0, 189, 0) !important;
+    color:rgb(0, 189, 0) !important;
 }
 
 .goldenrodCmd {
-    -webkit-text-fill-color:goldenrod !important;
+    color:goldenrod !important;
 }
 
 .UserLayout {

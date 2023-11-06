@@ -14,6 +14,7 @@ foreach ($list as $User) {
     if ($id == $_SESSION['currentUserId']) {
         continue;
     }
+    $id = $User->Id();
     $name = $User->Name();
     $email = $User->Email();
     $password = $User->Password();
@@ -26,6 +27,7 @@ foreach ($list as $User) {
     if ($isAdmin) {
         $adminHTML = <<<HTML
         <form method="post" action="updateProfil.php">
+            <input type="hidden" name="Id" value="$id">
             <input type="hidden" name="Name" value="$name">
             <input type="hidden" name="Email" value="$email">
             <input type="hidden" name="Password" value="$password">
@@ -34,13 +36,14 @@ foreach ($list as $User) {
             <input type="hidden" name="Blocked" value="$blocked">
             <input type="hidden" name="redirect" value="usersList.php">
             <button type="submit">
-                <i class="cmdIcon fa fa-user-gear"></i>
+                <i class="cmdIconVisible fa fa-user-gear"></i>
             </button>
         </form>
         HTML;
     } else {
         $adminHTML = <<<HTML
         <form method="post" action="updateProfil.php">
+            <input type="hidden" name="Id" value="$id">
             <input type="hidden" name="Name" value="$name">
             <input type="hidden" name="Email" value="$email">
             <input type="hidden" name="Password" value="$password">
@@ -49,7 +52,7 @@ foreach ($list as $User) {
             <input type="hidden" name="Blocked" value="$blocked">
             <input type="hidden" name="redirect" value="usersList.php">
             <button type="submit">
-                <i class="cmdIcon fa fa-user"></i>
+                <i class="cmdIconVisible fa fa-user"></i>
             </button>
         </form>
         HTML;
@@ -58,6 +61,7 @@ foreach ($list as $User) {
     if ($isBlocked) {
         $blockedHTML = <<<HTML
         <form method="post" action="updateProfil.php">
+            <input type="hidden" name="Id" value="$id">
             <input type="hidden" name="Name" value="$name">
             <input type="hidden" name="Email" value="$email">
             <input type="hidden" name="Password" value="$password">
@@ -66,13 +70,14 @@ foreach ($list as $User) {
             <input type="hidden" name="Blocked" value="0">
             <input type="hidden" name="redirect" value="usersList.php">
             <button type="submit">
-                <i class="cmdIcon fa fa-ban redCmd"></i>
+                <i class="cmdIconVisible fa fa-ban redCmd"></i>
             </button>
         </form>
         HTML;
     } else {
         $blockedHTML = <<<HTML
         <form method="post" action="updateProfil.php">
+            <input type="hidden" name="Id" value="$id">
             <input type="hidden" name="Name" value="$name">
             <input type="hidden" name="Email" value="$email">
             <input type="hidden" name="Password" value="$password">
@@ -81,16 +86,26 @@ foreach ($list as $User) {
             <input type="hidden" name="Blocked" value="1">
             <input type="hidden" name="redirect" value="usersList.php">
             <button type="submit">
-                <i class="cmdIcon fa-regular fa-circle greenCmd"></i>
+                <i class="cmdIconVisible fa-regular fa-circle greenCmd"></i>
             </button>
         </form>
         HTML;
     }
 
     $deleteHTML = <<<HTML
-    <a href="editProfilForm.php" class="">
-        <i class="cmdIcon fa fa-user-slash goldenrodCmd"></i>
-    </a>
+    <form method="post" action="updateProfil.php">
+        <input type="hidden" name="Id" value="$id">
+        <input type="hidden" name="Name" value="$name">
+        <input type="hidden" name="Email" value="$email">
+        <input type="hidden" name="Password" value="$password">
+        <input type="hidden" name="Avatar" value="$avatar">
+        <input type="hidden" name="Type" value="$type">
+        <input type="hidden" name="Blocked" value="1">
+        <input type="hidden" name="redirect" value="usersList.php">
+        <button type="submit">
+            <i class="cmdIconVisible fa fa-user-slash goldenrodCmd"></i>
+        </button>
+    </form>
     HTML;
 
 
