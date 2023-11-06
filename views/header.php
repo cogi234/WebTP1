@@ -1,19 +1,20 @@
 <?php
-    $pageTitle = "Photos Cloud";
-    if (!isset($viewTitle))
-        $viewTitle = "";
-    if (!isset($viewHeadCustom))
-        $viewHeadCustom = "";
+$pageTitle = "Photos Cloud";
+if (!isset($viewTitle))
+    $viewTitle = "";
+if (!isset($viewHeadCustom))
+    $viewHeadCustom = "";
 
-    if (!isset($viewName))
-        $viewName = "";
+if (!isset($viewName))
+    $viewName = "";
 
-    $loggedUserMenu = "";
-    $connectedUserAvatar = "";
+$loggedUserMenu = "";
+$connectedUserAvatar = "";
 
-    if (isset($_SESSION["validUser"]) || isset($_SESSION["isAdmin"])) {
-        $avatar = $_SESSION["avatar"];
-        $userName = $_SESSION["userName"];
+if (isset($_SESSION["validUser"]) || isset($_SESSION["isAdmin"])) {
+    $avatar = $_SESSION["avatar"];
+    $userName = $_SESSION["userName"];
+    if ((bool) $_SESSION["isAdmin"]) {
         $loggedUserMenu = <<<HTML
             <a href="logout.php" class="dropdown-item">
                 <i class="menuIcon fa fa-sign-out mx-2"></i> Déconnexion
@@ -28,24 +29,38 @@
                 <i class="menuIcon fa fa-image mx-2"></i> Liste des photos
             </a>
         HTML;
-        $connectedUserAvatar = <<<HTML
+    } else {
+        $loggedUserMenu = <<<HTML
+            <a href="logout.php" class="dropdown-item">
+                <i class="menuIcon fa fa-sign-out mx-2"></i> Déconnexion
+            </a>
+            <a href="editProfilForm.php" class="dropdown-item">
+                <i class="menuIcon fa fa-user mx-2"></i> Modifier votre profil
+            </a>
+            <a href="photosList.php" class="dropdown-item">
+                <i class="menuIcon fa fa-image mx-2"></i> Liste des photos
+            </a>
+        HTML;
+    }
+    
+    $connectedUserAvatar = <<<HTML
             <div class="UserAvatarSmall" style="background-image:url('$avatar')" title=""$userName></div>
         HTML;
-    } else {
-        $loggedUserMenu =  <<<HTML
+} else {
+    $loggedUserMenu = <<<HTML
             <a href="loginForm.php" class="dropdown-item">
                 <i class="menuIcon fa fa-sign-in mx-2"></i> Connexion
             </a> 
-        HTML;   
-        $connectedUserAvatar = <<<HTML
+        HTML;
+    $connectedUserAvatar = <<<HTML
             <div>&nbsp;</div>
-        HTML; 
-    }
+        HTML;
+}
 
-    $viewMenu = "";
-    if (strcmp($viewName,"photoList")==0) {
-        // toto add more items in popupmenu
-        $viewMenu =<<<HTML
+$viewMenu = "";
+if (strcmp($viewName, "photoList") == 0) {
+    // toto add more items in popupmenu
+    $viewMenu = <<<HTML
          <div class="dropdown-divider"></div>
          <a href="photosList.php?sort=date" class="dropdown-item" id="photosListCmd">
                 <i class="menuIcon fa fa-calendar mx-2"></i>Trier les photos par date de création
@@ -54,9 +69,9 @@
                 <i class="menuIcon fa fa-users mx-2"></i>Trier les photos par créateur
          </a>
         HTML;
-    }
+}
 
-    $viewHead = <<<HTML
+$viewHead = <<<HTML
         <a href="photosList.php" title="Liste des photos"><img src="images/PhotoCloudLogo.png" class="appLogo"></a>
         <span class="viewTitle">$viewTitle 
             <a href="newPhotoForm.php" class="cmdIcon fa fa-plus" title="Ajouter une photo"></a>
