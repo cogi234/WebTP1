@@ -14,37 +14,76 @@ foreach ($list as $User) {
     if ($id == $_SESSION['currentUserId']) {
         continue;
     }
-    $name = $User->name();
+    $name = $User->Name();
     $email = $User->Email();
+    $password = $User->Password();
     $avatar = $User->Avatar();
+    $type = $User->Type();
+    $blocked = $User->Blocked();
     $isAdmin = $User->isAdmin();
     $isBlocked = $User->isBlocked();
 
     if ($isAdmin) {
         $adminHTML = <<<HTML
-        <a href="editProfilForm.php" class="">
-            <i class="cmdIcon fa fa-user-gear "></i>
-        </a>
+        <form method="post" action="updateProfil.php">
+            <input type="hidden" name="Name" value="$name">
+            <input type="hidden" name="Email" value="$email">
+            <input type="hidden" name="Password" value="$password">
+            <input type="hidden" name="Avatar" value="$avatar">
+            <input type="hidden" name="Type" value="0">
+            <input type="hidden" name="Blocked" value="$blocked">
+            <input type="hidden" name="redirect" value="usersList.php">
+            <button type="submit">
+                <i class="cmdIcon fa fa-user-gear"></i>
+            </button>
+        </form>
         HTML;
     } else {
         $adminHTML = <<<HTML
-        <a href="editProfilForm.php" class="">
-            <i class="cmdIcon fa fa-user "></i>
-        </a>
+        <form method="post" action="updateProfil.php">
+            <input type="hidden" name="Name" value="$name">
+            <input type="hidden" name="Email" value="$email">
+            <input type="hidden" name="Password" value="$password">
+            <input type="hidden" name="Avatar" value="$avatar">
+            <input type="hidden" name="Type" value="1">
+            <input type="hidden" name="Blocked" value="$blocked">
+            <input type="hidden" name="redirect" value="usersList.php">
+            <button type="submit">
+                <i class="cmdIcon fa fa-user"></i>
+            </button>
+        </form>
         HTML;
     }
 
     if ($isBlocked) {
         $blockedHTML = <<<HTML
-        <a href="editProfilForm.php" class="">
-            <i class="cmdIcon fa fa-ban redCmd"></i>
-        </a>
+        <form method="post" action="updateProfil.php">
+            <input type="hidden" name="Name" value="$name">
+            <input type="hidden" name="Email" value="$email">
+            <input type="hidden" name="Password" value="$password">
+            <input type="hidden" name="Avatar" value="$avatar">
+            <input type="hidden" name="Type" value="$type">
+            <input type="hidden" name="Blocked" value="0">
+            <input type="hidden" name="redirect" value="usersList.php">
+            <button type="submit">
+                <i class="cmdIcon fa fa-ban redCmd"></i>
+            </button>
+        </form>
         HTML;
     } else {
         $blockedHTML = <<<HTML
-        <a href="editProfilForm.php" class="">
-            <i class="cmdIcon fa-regular fa-circle greenCmd"></i>
-        </a>
+        <form method="post" action="updateProfil.php">
+            <input type="hidden" name="Name" value="$name">
+            <input type="hidden" name="Email" value="$email">
+            <input type="hidden" name="Password" value="$password">
+            <input type="hidden" name="Avatar" value="$avatar">
+            <input type="hidden" name="Type" value="$type">
+            <input type="hidden" name="Blocked" value="1">
+            <input type="hidden" name="redirect" value="usersList.php">
+            <button type="submit">
+                <i class="cmdIcon fa-regular fa-circle greenCmd"></i>
+            </button>
+        </form>
         HTML;
     }
 
