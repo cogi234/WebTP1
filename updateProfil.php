@@ -22,4 +22,5 @@ $user = UsersFile()->get($_SESSION['currentUserId']);
 $_SESSION["name"] = $user->Name();
 $_SESSION["avatar"] = $user->Avatar();
 $_SESSION['Email'] = $user->Email();
+$_SESSION['isAdmin'] = $user->IsAdmin();
 redirect($redirect);
