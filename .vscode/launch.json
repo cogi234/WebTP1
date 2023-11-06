@@ -10,7 +10,7 @@
             "request": "launch",
             "runtimeArgs": [
                 "-S",
-                "localhost:80/WebTP1/loginForm.php",
+                "localhost:8080/WebTP1/loginForm.php",
                 "-t",
                 "."
             ],
