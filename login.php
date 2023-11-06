@@ -17,6 +17,7 @@ function EmailExist($email)
         $GLOBALS["userName"] = $user->Name();
         $GLOBALS["avatar"] = $user->Avatar();
         $GLOBALS["password"] = $user->Password();
+        $GLOBALS["admin"] = $user->isAdmin();
         return true;
     }
     return false;
@@ -45,6 +46,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['currentUserId'] = $id;
         $_SESSION['userName'] = $userName;
         $_SESSION['avatar'] = $avatar;
+        $_SESSION['isAdmin'] = $admin;
         redirect('photosList.php');
     }
 }
