@@ -11,7 +11,7 @@
     $loggedUserMenu = "";
     $connectedUserAvatar = "";
 
-    if (isset($_SESSION["validUser"]) || isset($_SESSION["validAdmin"])) {
+    if (isset($_SESSION["validUser"]) || isset($_SESSION["isAdmin"])) {
         $avatar = $_SESSION["avatar"];
         $userName = $_SESSION["userName"];
         $loggedUserMenu = <<<HTML

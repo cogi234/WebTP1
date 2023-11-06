@@ -21,7 +21,7 @@ if (file_exists("views/scriptsBundle.html"))
 
 $localScript = "";
 
-if (isset($_SESSION["validUser"]) || isset($_SESSION["validAdmin"])) {
+if (isset($_SESSION["validUser"]) || isset($_SESSION["isAdmin"])) {
     $timeout = (int)$_SESSION["timeout"];
     $localScript = <<<HTML
     <script> $(document).ready(()=>{  timeout($timeout); }) </script>
