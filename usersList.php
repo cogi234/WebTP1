@@ -26,6 +26,9 @@ foreach ($list as $User) {
                     <span class="UserName">$name</span>
                     <a href="mailto:$email" class="UserEmail" target="_blank" >$email</a>
                 </div>
+                <div class="UserCommandPanel">
+
+                </div>
             </div>
         </div>
     </div>           
