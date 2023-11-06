@@ -2,8 +2,10 @@
 include 'php/sessionManager.php';
 include "models/photos.php";
 include "models/users.php";
-$viewName="photoList";
+
 userAccess();
+
+$viewName="photoList";
 $viewTitle = "Photos";
 $list = PhotosFile()->toArray();
 $viewContent = "<div class='photosLayout'>";

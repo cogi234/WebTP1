@@ -1,8 +1,9 @@
 <?php
 include 'php/sessionManager.php';
-include_once "models/Users.php";
+include_once "models/users.php";
 
 userAccess();
+adminAccess();
 
 $viewTitle = "Liste des usagers";
 $list = UsersFile()->toArray();
