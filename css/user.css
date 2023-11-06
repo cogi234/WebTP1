@@ -19,7 +19,7 @@
 }
 
 .UserContainer .cmdIcon {
-    display: none;
+    display: block;
 }
 
 .UserContainer:hover .cmdIcon {
@@ -36,15 +36,15 @@
 }
 
 .redCmd {
-    color:red !important;
+    -webkit-text-fill-color:red !important;
 }
 
 .greenCmd {
-    color:rgb(0, 189, 0) !important;
+    -webkit-text-fill-color:rgb(0, 189, 0) !important;
 }
 
 .goldenrodCmd {
-    color:goldenrod !important;
+    -webkit-text-fill-color:goldenrod !important;
 }
 
 .UserLayout {

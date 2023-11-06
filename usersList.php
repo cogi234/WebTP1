@@ -11,12 +11,50 @@ $viewContent = "";
 
 foreach ($list as $User) {
     $id = strval($User->id());
-    if ($id == $_SESSION['currentUserId']){
+    if ($id == $_SESSION['currentUserId']) {
         continue;
     }
     $name = $User->name();
     $email = $User->Email();
     $avatar = $User->Avatar();
+    $isAdmin = $User->isAdmin();
+    $isBlocked = $User->isBlocked();
+
+    if ($isAdmin) {
+        $adminHTML = <<<HTML
+        <a href="editProfilForm.php" class="">
+            <i class="cmdIcon fa fa-user-gear "></i>
+        </a>
+        HTML;
+    } else {
+        $adminHTML = <<<HTML
+        <a href="editProfilForm.php" class="">
+            <i class="cmdIcon fa fa-user "></i>
+        </a>
+        HTML;
+    }
+
+    if ($isBlocked) {
+        $blockedHTML = <<<HTML
+        <a href="editProfilForm.php" class="">
+            <i class="cmdIcon fa fa-ban redCmd"></i>
+        </a>
+        HTML;
+    } else {
+        $blockedHTML = <<<HTML
+        <a href="editProfilForm.php" class="">
+            <i class="cmdIcon fa-regular fa-circle greenCmd"></i>
+        </a>
+        HTML;
+    }
+
+    $deleteHTML = <<<HTML
+    <a href="editProfilForm.php" class="">
+        <i class="cmdIcon fa fa-user-slash goldenrodCmd"></i>
+    </a>
+    HTML;
+
+
     $UserHTML = <<<HTML
     <div class="UserRow" User_id="$id">
         <div class="UserContainer noselect">
@@ -26,9 +64,11 @@ foreach ($list as $User) {
                     <span class="UserName">$name</span>
                     <a href="mailto:$email" class="UserEmail" target="_blank" >$email</a>
                 </div>
-                <div class="UserCommandPanel">
-
-                </div>
+            </div>
+            <div class="UserCommandPanel">
+                $adminHTML
+                $blockedHTML
+                $deleteHTML
             </div>
         </div>
     </div>           

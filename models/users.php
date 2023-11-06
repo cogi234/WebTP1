@@ -86,8 +86,6 @@ class User extends Record
     static function keyCompare($user_a, $user_b) {
         return strcmp($user_a->Email(),$user_b->Email());
     }
-
-
 }
 
 class UsersFile extends Records
