@@ -4,13 +4,22 @@ include 'models/users.php';
 include 'models/photos.php';
 
 userAccess();
-$currentUserId = (int) $_SESSION["currentUserId"];
+
+$redirect = 'loginForm.php';
+if (isset($_POST['redirect'])) {
+    $redirect = $_POST['redirect'];
+}
+
+$idToDelete = $_SESSION['currentUserId'];
+if (isset($_POST['Id'])) {
+    $idToDelete = (int)$_POST['Id'];
+}
 
 do {
     $photos = PhotosFile()->toArray();
     $oneDeleted = false;
     foreach ($photos as $photo) {
-        if ($photo->OwnerId() == $currentUserId) {
+        if ($photo->OwnerId() == $idToDelete) {
             $oneDeleted = true;
             PhotosFile()->remove($photo->Id());
             break;
@@ -18,5 +27,5 @@ do {
     }
 } while ($oneDeleted);
 
-UsersFile()->remove($currentUserId);
-redirect('loginForm.php');
+UsersFile()->remove($idToDelete);
+redirect($redirect);
