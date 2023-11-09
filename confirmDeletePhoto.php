@@ -1,6 +1,7 @@
 <?php
 include 'php/sessionManager.php';
 include 'models/photos.php';
+include "models/users.php";
 $viewTitle = "Retrait de photo";
 
 userAccess(200);
@@ -13,7 +14,7 @@ $photo = PhotosFile()->get($id);
 if ($photo == null)
     redirect("illegalAction.php");
 
-if ($photo->OwnerId() != (int) $_SESSION["currentUserId"])
+if ($photo->OwnerId() != (int) $_SESSION["currentUserId"] && !$_SESSION["isAdmin"])
     redirect("illegalAction.php");
 
 $title = $photo->Title();

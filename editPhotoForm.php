@@ -1,6 +1,7 @@
 <?php
 include 'php/sessionManager.php';
 include 'models/photos.php';
+include "models/users.php";
 userAccess();
 
 $viewTitle = "Modification de photo";
@@ -15,7 +16,7 @@ if ($photo == null)
     redirect("illegalAction.php");
 
 $ownerId = $photo->OwnerId();
-if ($ownerId != (int) $_SESSION["currentUserId"])
+if ($ownerId != (int) $_SESSION["currentUserId"] && !$_SESSION["isAdmin"])
     redirect("illegalAction.php");
 
 $title = $photo->Title();

@@ -22,7 +22,7 @@ foreach ($list as $photo) {
     $sharedIndicator = "";
     $editCmd = "";
     $visible = $shared;
-    if (($photo->OwnerId() == (int)$_SESSION["currentUserId"])) {
+    if (($photo->OwnerId() == (int)$_SESSION["currentUserId"]) || $_SESSION["isAdmin"]) {
         $visible = true;
         $editCmd = <<<HTML
             <a href="editPhotoForm.php?id=$id" class="cmdIconSmall fa fa-pencil" title="Editer $title"> </a>
@@ -38,7 +38,9 @@ foreach ($list as $photo) {
     $photoHTML = <<<HTML
         <div class="photoLayout" photo_id="$id">
             <div class="photoTitleContainer" title="$description">
-                <div class="photoTitle ellipsis">$title</div> $editCmd</div>
+                <div class="photoTitle ellipsis">$title</div>
+                $editCmd
+            </div>
             <a href="$image" target="_blank">
                 <div class="photoImage" style="background-image:url('$image')">
                     <div class="UserAvatarSmall transparentBackground" style="background-image:url('$ownerAvatar')" title="$ownerName"></div>
