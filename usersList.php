@@ -93,14 +93,8 @@ foreach ($list as $User) {
     }
 
     $deleteHTML = <<<HTML
-    <form method="post" action="updateProfil.php">
+    <form method="post" action="confirmDeleteProfil.php">
         <input type="hidden" name="Id" value="$id">
-        <input type="hidden" name="Name" value="$name">
-        <input type="hidden" name="Email" value="$email">
-        <input type="hidden" name="Password" value="$password">
-        <input type="hidden" name="Avatar" value="$avatar">
-        <input type="hidden" name="Type" value="$type">
-        <input type="hidden" name="Blocked" value="1">
         <input type="hidden" name="redirect" value="usersList.php">
         <button type="submit">
             <i class="cmdIconVisible fa fa-user-slash goldenrodCmd"></i>
