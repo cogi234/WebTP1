@@ -68,6 +68,9 @@ if (strcmp($viewName, "photoList") == 0) {
          <a href="photosList.php?sort=owners" class="dropdown-item" id="photosListCmd">
                 <i class="menuIcon fa fa-users mx-2"></i>Trier les photos par créateur
          </a>
+         <a href="photosList.php?filter=mine" class="dropdown-item" id="photosListCmd">
+                <i class="menuIcon fa fa-user mx-2"></i>Mes photos
+         </a>
         HTML;
 }
 
