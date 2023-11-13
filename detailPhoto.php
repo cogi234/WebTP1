@@ -28,14 +28,20 @@ $owner = UsersFile()->Get($photo->OwnerId());
 $ownerName = $owner->Name();
 $ownerAvatar = $owner->Avatar();
 
+$viewContent = <<<HTML
+        <div>
+            <div class="photoDetailsOwner">$ownerName</div>
+            <div class="photoDetailsTitle">$title</div>
+        </div>
+HTML;
 
 
 
 $viewScript = <<<HTML
-        <script src='js/validation.js'></script>
-        <script src='js/imageControl.js'></script>
+        
         <script defer>
-            initFormValidation();
             $("#addPhotoCmd").hide();
         </script>
     HTML;
+
+include "views/master.php";
