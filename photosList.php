@@ -10,6 +10,22 @@ $viewTitle = "Photos";
 $list = PhotosFile()->toArray();
 $viewContent = "<div class='photosLayout'>";
 
+//Sort functions
+function CompareDates($a, $b) {
+    return $a->CreationDate() - $b->CreationDate();
+}
+function CompareAuthors($a, $b) {
+    return strcasecmp(UsersFile()->Get($a->OwnerId())->Name(), UsersFile()->Get($b->OwnerId())->Name());
+}
+
+if(isset($_GET["sort"])) {
+    if ($_GET["sort"] == "owners"){
+        usort($list, "CompareAuthors");
+    } else  if ($_GET["sort"] == "date"){
+        usort($list, "CompareDates");
+    }
+}
+
 foreach ($list as $photo) {
     $id = strval($photo->id());
     $title = $photo->Title();
