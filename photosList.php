@@ -13,7 +13,7 @@ $viewContent = "<div class='photosLayout'>";
 
 //Filter functions
 function FilterMine($a) {
-    return $a->AuthorID() == $_SESSION["currentUserId"];
+    return $a->OwnerId() == $_SESSION["currentUserId"];
 }
 
 if(isset($_GET["filter"]) && $_GET["filter"] == "mine") {
