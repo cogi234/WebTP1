@@ -28,10 +28,23 @@ $owner = UsersFile()->Get($photo->OwnerId());
 $ownerName = $owner->Name();
 $ownerAvatar = $owner->Avatar();
 
+
+$formatter = new IntlDateFormatter('fr_CA',IntlDateFormatter::FULL,IntlDateFormatter::FULL,'America/New_York',IntlDateFormatter::GREGORIAN);
+$date = $formatter->format($creationDate);
+
+
 $viewContent = <<<HTML
-        <div>
-            <div class="photoDetailsOwner">$ownerName</div>
+        <div class="photoLayout">
+            <div class="photoDetailsOwner">
+                <div class="UserAvatarSmall transparentBackground" style="background-image:url('$ownerAvatar')" title="$ownerName"></div>
+                $ownerName
+            </div>
             <div class="photoDetailsTitle">$title</div>
+            <div class="photoDetailsDescription">$description</div>
+            <div class="photoDetailsCreationDate">$date</div>
+            <img src="$image" class="photoDetailsLargeImage">
+
+            
         </div>
 HTML;
 
