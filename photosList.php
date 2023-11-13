@@ -67,7 +67,7 @@ foreach ($list as $photo) {
                 <div class="photoTitle ellipsis">$title</div>
                 $editCmd
             </div>
-            <a href="$image" target="_blank">
+            <a href="detailPhoto.php?id=$id">
                 <div class="photoImage" style="background-image:url('$image')">
                     <div class="UserAvatarSmall transparentBackground" style="background-image:url('$ownerAvatar')" title="$ownerName"></div>
                     $sharedIndicator
