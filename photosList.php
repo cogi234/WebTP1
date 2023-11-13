@@ -82,9 +82,6 @@ $viewContent = $viewContent . "</div>";
 
 $viewScript = <<<HTML
     <script src='js/session.js'></script>
-    <script defer>
-        $("#addphotoCmd").hide();
-    </script>
 HTML;
 
 include "views/master.php";
