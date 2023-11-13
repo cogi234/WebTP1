@@ -9,11 +9,11 @@ Todo:
 ✅  - Empêcher la connexion des usagers bloqués avec le message approprié
 ✅  - Empêcher l’accès illégal des pages réservées aux admins
 ✅  - Permettre aux usagers admins l’accès total aux photos de tous les usagers
-    - Ajouter une page qui affiche les détails d’une photo (Avatar du créateur, nom du créateur, titre, image de la
+✅  - Ajouter une page qui affiche les détails d’une photo (Avatar du créateur, nom du créateur, titre, image de la
 	  photo de taille réactive, description de largeur réactive, date et heure de création en français). Cette page sera
 	  obtenue en cliquant sur la photo dans la liste de photos.
-	- Dans la page qui affiche les photos, ajouter des articles de menu dans le popup-menu qui offrent les
+✅	- Dans la page qui affiche les photos, ajouter des articles de menu dans le popup-menu qui offrent les
 	  fonctions suivantes :
-	    - Tri des photos par leur date de création (décroissante)
-	    - Tri des photos par créateur (ordre ascendant de noms de créateurs)
-	    - Voir mes photos (photos de l’usager connecté)
+✅      - Tri des photos par leur date de création (décroissante)
+✅	   - Tri des photos par créateur (ordre ascendant de noms de créateurs)
+✅	    - Voir mes photos (photos de l’usager connecté)
