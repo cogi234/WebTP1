@@ -10,6 +10,16 @@ $viewTitle = "Photos";
 $list = PhotosFile()->toArray();
 $viewContent = "<div class='photosLayout'>";
 
+
+//Filter functions
+function FilterMine($a) {
+    return $a->AuthorID() == $_SESSION["currentUserId"];
+}
+
+if(isset($_GET["filter"]) && $_GET["filter"] == "mine") {
+    $list = array_filter($list,"FilterMine");
+}
+
 //Sort functions
 function CompareDates($a, $b) {
     return $a->CreationDate() - $b->CreationDate();
